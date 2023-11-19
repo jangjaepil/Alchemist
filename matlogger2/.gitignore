@@ -1,0 +1,4 @@
+*.kdev4
+*.orig
+build/
+docs/html/

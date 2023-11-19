@@ -1,0 +1,39 @@
+image: hrii/bionic_ros_melodic:latest
+
+stages:
+  - build
+  - test
+  # - pages
+
+before_script:
+  - apt update
+  - apt install ros-melodic-pinocchio -y
+  - source /opt/ros/melodic/setup.bash
+
+build:
+  stage: build
+  script:
+    # Build matlogger2
+    - git clone git@gitlab.iit.it:hrii/general/hrii_installation_tools.git
+    - ./hrii_installation_tools/scripts/clone_and_build_matlogger2.sh
+
+test:
+  stage: test
+  script:
+    - echo "TO BE DONE!!!" 
+    # - catkin_make run_tests
+
+# pages:
+#   stage: pages
+#   script:
+#   - apt update && apt install doxygen graphviz -y
+#   - cd ~/catkin_ws/src/hrii_robot_controllers
+#   - doxygen Doxyfile
+#   - cd
+#   - mv ~/catkin_ws/src/hrii_robot_controllers/docs/html/ /builds/hrii/general/hrii_robot_controllers/public
+  
+#   artifacts:
+#     paths:
+#     - public
+#   # only:
+#     # - master
